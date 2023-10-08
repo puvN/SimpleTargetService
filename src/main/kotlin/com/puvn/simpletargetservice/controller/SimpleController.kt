@@ -21,4 +21,10 @@ class SimpleController(
     fun returnServiceResponse2() =
         ResponseEntity<String>(simpleService.getHelloWorld2() + " ${serverProperties.port}", HttpStatus.OK)
 
+    @GetMapping("/app1/v1/internalErrorEndpoint")
+    fun returnInternalError() = ResponseEntity<String>("this is error", HttpStatus.INTERNAL_SERVER_ERROR)
+
+    @GetMapping("app1/v1/clientErrorEndpoint")
+    fun returnClientError() = ResponseEntity<String>("this is client error", HttpStatus.BAD_REQUEST)
+
 }
